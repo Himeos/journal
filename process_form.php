@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 session_start();
 header('Content-Type: application/json');
 
@@ -9,18 +10,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $public = isset($_POST["public"]) ? 1 : 0;
     // Establish a database connection
-    $servername = "sql304.infinityfree.com";
-                $username = "if0_35982586";
-                $password = "Journal21";
-                $database = "if0_35982586_journal";
-                $conn = new mysqli($servername, $username, $password, $database);
-    // Check connection
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    $servername = $_ENV['DB_HOST'];
+    $username = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASS'];
+    $database = $_ENV['DB_NAME'];
+    $conn = new mysqli($servername, $username, $password, $database);
+    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // Prepare and execute the SQL statement
+    
     $stmt = $conn->prepare("INSERT INTO posts (user_id, subject, journal_entry, public) VALUES (?, ?, ?, ?)");
-    // Assuming you have a session variable storing the user ID
+    
     $user_id = $_SESSION["user_id"];
     $stmt->bind_param("issi", $user_id, $subject, $entry, $public);
     if ($stmt->execute()) {

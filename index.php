@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['username']))
 {
-    header("Location: nindex.blade.php");
+    header("Location: /loginpage.php");
 }
 
 
@@ -16,197 +16,9 @@ if(!isset($_SESSION['username']))
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="css/main.css">
     <title>Generic Journal Name</title>
-    <style>
-    #message{
-        
-    }
-
-        .background {
-            background-color: #3b5827;
-        }
-        .button-link {
-                display: inline-block;
-                padding: 25px 35px;
-                background-color: #243E36;
-                color: #fff;
-                text-decoration: none;
-                border: none;
-                border-radius: 25px;
-                transition: background-color 0.1s ease, padding 0.2s ease;
-                }
-  
-        .custom-label {
-            padding-left: 7rem;
-        }
-       .button { padding-left: 6rem;}
-
-       .primarybackground{
-           background-color: #F1F7ED; /* darker */
-        }
-        .navbar{
-            background-color: #F1F7ED;
-        }
-  
-        .secondarybackground{
-            background-color: #E4E4DE; /* lighter */
-        }
-        
-        .tertiarybackground {
-            background-color: #595f39; /* dark green */
-        }
-        
-        .quaternarybackground{
-            background-color: 1B1B1B;
-        }
-        .home{
-            color: #243E36;
-            font-size: 4rem;
-            text-decoration: none;
-        }
-        .greentext {
-            color: #243E36;
-        }
-
-        .whitetext {
-            color: white;
-        }
-        .nohover:hover {
-            text-decoration: none; 
-            color: inherit;
-        }
-        .bg-img {
-            background-image: url('img/background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;   
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-        }
-        #homeicon{
-            width: 90px;
-            height: auto;
-        }
-        
-        .lighterbackground{
-             background-color: #354E56;  pacific blue 
-            
-        }
-        .goldenbackground{
-            background-color:  #8B6212;  /*yarrow gold */
-        }
-
-        .formbackground {
-            background-color: #C4C5BA;
-        }
-        .nopadding {
-            padding: 0;
-        }
-        .formborder
-        {
-            border: 5px;
-            border-radius: 10px;
-            
-        }
-        .alert.alert-success {
-            
-        }
-
-
     
-       @media only screen and (max-width: 991px) {
-    .navbar-nav {
-        display: none;
-    }
-
-    #welcome {
-        display: none;
-    }
-
-    .container-fluid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar-nav {
-        margin-top: 10px;
-    }
-
-    .d-flex.align-items-center {
-        justify-content: center;
-    }
-}
-
-
-.spacer {
-    aspect-ratio: 960/300;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.spacer2 {
-    aspect-ratio: 1213/790;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-}
-.spacer3 {
-    aspect-ratio: 900/50;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-}
-
-.layer1 {
-    background-image: url('./svg/waves.svg');
-}
-
-.layer2{
-background-image: url('./svg/wavesbottomtest.svg');
-}
-
-.layer3{
-background-image: url('./svg/wavesfooter.svg');
-}
-
-.entrypadding {
-    padding-top: 7rem;
-}
-
-.footercontainer{
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
-
-.links{
-    display: flex;
-    
-    list-style-type: none;
-
-    
-}
-.links li {
-    color: white;
-    
-    margin: 10px 5px 0 0;
-}
-
-
-        
-        
-        
-        
-        
-        
-    </style>
 </head>
 <body class="text-black primarybackground">
 
@@ -214,21 +26,20 @@ background-image: url('./svg/wavesfooter.svg');
 
     <nav class="navbar navbar-expand-lg navbar-dark nopadding">
         <div class="container-fluid nopadding ">
-            <a class="nohover ml-5" href="/"> <i class="fa-solid fa-book-open fa-4x" style="color: #1b1b1b;"></i> </a>
+            <a class="nohover ml-5 mr-5" href="/"> <i class="fa-solid fa-book-open fa-4x mr-5" style="color: #1b1b1b;"></i> </a>
             
             
                 <ul class="navbar-nav mr-auto ml-auto ">
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nohover text-dark font-weight-bold mr-3" href="#">My Profile</a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nohover text-dark font-weight-bold mr-3" href="#">Settings?</a>
+                        <a class="nohover text-dark font-weight-bold mr-3" href="/users.php">Users</a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nohover text-dark font-weight-bold mr-3" href="/users.blade.php">Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nohover text-dark font-weight-bold mr-3" href="#">Placeholder</a>
+                        <a class="nohover text-dark font-weight-bold mr-3" href="#">Settings</a>
                     </li>
                 </ul>
                 </div>
@@ -237,10 +48,10 @@ background-image: url('./svg/wavesfooter.svg');
                     <?php
                     if(isset($_SESSION["username"])) {
                         echo '<p class="m-3 text-dark" id="welcome">Welcome, ' . $_SESSION["username"] . '</p>';
-                        echo '<a href="logout.blade.php" class="btn text-black m-2">Logout</a>';
+                        echo '<a href="logout.php" class="btn text-black m-2">Logout</a>';
                     } else {
-                        echo '<a href="login.blade.php" class="btn btn-outline-success m-2">Login</a>';
-                        echo '<a href="register.blade.php" class="btn btn-outline-success m-2">Register</a>';
+                        echo '<a href="loginpage.php" class="btn btn-outline-success m-2">Login</a>';
+                        echo '<a href="register.php" class="btn btn-outline-success m-2">Register</a>';
                     }
                     ?>
                 </div>
@@ -295,11 +106,11 @@ if(isset($_SESSION["username"])) {
 ?>
 
 <?php
-session_start();
+
 if(isset($_SESSION["username"])) {
-    $servername = "sql304.infinityfree.com";
-$username = "if0_35982586";
-$password = "Journal21";
+    $servername = "localhost";
+$username = "root";
+$password = "Ganimetaffe11";
 $database = "if0_35982586_journal";
 $user_id = $_SESSION["user_id"];
 $conn = new mysqli($servername, $username, $password, $database);
@@ -386,7 +197,7 @@ if(isset($_SESSION["username"])) {
 
 <footer>
 <div class="footercontainer spacer3 layer3">
- <ul class="links"> <li> hallo </li> <li> hallo2 </li> <li> hallo3 </li> </ul> 
+ 
 </div>
 <!-- <div class="spacer3 layer3"> </div> -->
 </footer>

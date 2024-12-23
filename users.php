@@ -1,14 +1,19 @@
 <?php
+
+require_once __DIR__ . '/vendor/autoload.php';
 session_start();
 if(!isset($_SESSION['username']))
 {
-    header("Location: nindex.blade.php");
+    header("Location: loginpage.php");
 }
-$servername = "sql304.infinityfree.com";
-                $username = "if0_35982586";
-                $password = "Journal21";
-                $database = "if0_35982586_journal";
-                $conn = new mysqli($servername, $username, $password, $database);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    $servername = $_ENV['DB_HOST'];
+    $username = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASS'];
+    $database = $_ENV['DB_NAME'];
+    $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection
 if ($conn->connect_error) {
@@ -157,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('userId', userId);
 
             // Send fetch request
-            fetch('follow_users.blade.php', {
+            fetch('follow_users.php', {
                 method: 'POST',
                 body: formData
             })

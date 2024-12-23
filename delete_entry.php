@@ -1,12 +1,16 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 session_start();
 
 if(isset($_SESSION["username"])) {
-    $servername = "sql304.infinityfree.com";
-    $username = "if0_35982586";
-    $password = "Journal21";
-    $database = "if0_35982586_journal";
-    $user_id = $_SESSION["user_id"];
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    $servername = $_ENV['DB_HOST'];
+    $username = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASS'];
+    $database = $_ENV['DB_NAME'];
+    $conn = new mysqli($servername, $username, $password, $database);
 
     // Check if entryId is set and is a valid integer
     if(isset($_POST["entryId"]) && filter_var($_POST["entryId"], FILTER_VALIDATE_INT)) {

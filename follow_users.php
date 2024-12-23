@@ -1,5 +1,7 @@
 
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
 
@@ -18,11 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $followedId = $_POST['userId'];
 
 
-    $servername = "sql304.infinityfree.com";
-                $username = "if0_35982586";
-                $password = "Journal21";
-                $database = "if0_35982586_journal";
-                $conn = new mysqli($servername, $username, $password, $database);
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
+    $servername = $_ENV['DB_HOST'];
+    $username = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASS'];
+    $database = $_ENV['DB_NAME'];
+    $conn = new mysqli($servername, $username, $password, $database);
 
 
 if ($conn->connect_error) {
