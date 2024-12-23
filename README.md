@@ -1,9 +1,9 @@
 # Journaling App
 
-A simple journaling application built with MySQL and PHP. Users can create and manage their journal entries, set privacy levels, and follow other users to share thoughts and reflections. This project was built to practice working with PHP, MySQL, and basic web development techniques.
+A simple journaling application built with MySQL and plain PHP. Users can create and manage their journal entries, set privacy levels, and follow other users to share thoughts and reflections. This project was built to practice working with PHP, MySQL, and basic web development techniques.
 
 ## Features
-- **User Authentication**: Secure login and registration system.
+- **User Authentication**: Login and registration system.
 - **Create, Read, Update, and Delete Journal Entries**: Users can manage their journal posts.
 - **Privacy Settings for Posts**: Control whether journal entries are public or private.
 - **User Following**: Users can follow each other, though this feature is incomplete.
@@ -11,7 +11,7 @@ A simple journaling application built with MySQL and PHP. Users can create and m
 ## Incomplete Features
 The following features are currently in progress and not fully functional:
 - **Following Other Users**: 
-  - The system allows users to follow other users, but the functionality is incomplete. At the moment, users can follow others, but there are no further actions or features available (like viewing posts from followed users or notifications). This part of the app is under development and is not yet usable.
+  - The system allows users to follow other users, but the functionality is incomplete. At the moment, users can follow others, and see their posts but there are no further actions or features available. This feature is incomplete.
 
 ## Installation
 
